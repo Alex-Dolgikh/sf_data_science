@@ -1,4 +1,7 @@
 import numpy as np
+from math import floor
+
+## Версия 2, вместо случайных чисел используется дихотомия
 
 def guess_game(number: int=1) -> int:
     """Алгоритм угадывает число от 1 до 100
@@ -13,7 +16,7 @@ def guess_game(number: int=1) -> int:
     lower = 0
     while True:
         counter += 1
-        guess_number = np.random.randint(lower, upper) 
+        guess_number = floor ((upper + lower)/2)
         if guess_number < number:
             lower = guess_number + 1
         elif guess_number > number:
@@ -45,4 +48,4 @@ def score_game(guess_game) -> int:
     
 if __name__ == '__main__':
     print('Run benchmarking for game: ', end='')
-    print(score_game(guess_game))
+    score_game(guess_game)
